@@ -69,30 +69,67 @@ session_start();
 			<div class="account-center">
 				<div class="account-box">
                     <h4>LOGIN</h4>
-                    <form action ="POST" class="form-signin">
-                    <?php
-                        if(isset($_SESSION['status']) && $_SESSION['status'] !='')
-                        {
-                        echo '<h2 class="bg-danger text-white"> '.$_SESSION['status'].' </h2>';
-                        unset($_SESSION['status']);
-                      }
-                
-                    ?>
+                    <form action =" " class="form-signin " method="POST">
+                  
                         <div class="form-group">
                             <label>Username or Email</label>
-                            <input type="text" autofocus="" class="form-control" name="email">
+                            <input type="text" autofocus="" class="form-control" name="email" autocomplete="off">
                         </div>
                         <div class="form-group">
                             <label>Password</label>
                             <input type="password" class="form-control" name="passwords">
                         </div>
                         <div class="text-center register-link">
-                            Don’t have an account? <a href="signup_student.php">Register Now</a>
+                            Don’t have an account? <a href="registration.php">Register Now</a>
                         </div>
                         <div class="form-group text-center">
-                            <button  name="login_btn" class="btn btn-primary account-btn">Login</button>
+                            <button  name="login" class="btn btn-primary btn-block">Login</button>
                         </div>
-                        
+
+                       
+                        <?php
+    
+                      $DB = mysqli_connect('localhost','root','','udsm_counselling');
+                if($DB){
+                      if(isset($_POST['login'])){
+                     $email = mysqli_real_escape_string($DB,$_POST['email']);
+                     $pass= mysqli_real_escape_string($DB,$_POST['passwords']);
+
+                    $query = mysqli_query($DB,"SELECT * from students where email='$email'");
+                    if(mysqli_num_rows($query)==1){
+                         $fetch = mysqli_fetch_assoc($query);
+                         $passi = $fetch['password'];
+
+                            if(password_verify($pass,$passi)){
+                                    //echo "password match";
+                                    session_start();
+                                    $_SESSION['name']=$fetch['email'];
+                                    header('location:index.php');
+                           }
+                else{
+                    ?>  <div class="containetr justify-content-center mt-3 mb-3">
+                    <div class="alert alert-danger text-center">Incorrect Username or Password </div>
+                    </div>  
+                     <?php
+                }
+             }
+             else{
+                ?>  
+                    <div class="alert alert-danger text-center">Incorrect Username or Password </div>
+                
+                     <?php
+             }
+        }
+        else{
+          //  echo "login button not clicked ";
+        }
+    }
+    else{
+        echo "no connection";
+    }
+    
+    ?>
+
                     </form>
                 </div>
 			</div>
@@ -102,6 +139,7 @@ session_start();
 	<script src="assets/js/popper.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/app.js"></script>
+
 </body>
 
 
