@@ -44,7 +44,7 @@ $query = "SELECT * from appointment";
 								<thead>
 									<tr>
                                         <th>S/N</th>
-										<th>Appointment ID</th>
+										<!-- <th>Appointment ID</th> -->
                                         <th>Issue Faced</th>
 																			
 										<th>Appointment Date</th>
@@ -62,7 +62,7 @@ $query = "SELECT * from appointment";
 			                        ?>
 									<tr>
                                         <td><?php echo $i++ ?></td>
-                                        <td><?php echo $row['appointment_id']?></td>
+                                        <!-- <td><?php echo $row['appointment_id']?></td> -->
                                         <td><?php echo $row['issuefaced']?></td>
                                         
                                         <td><?php echo $row['dates']?></td>

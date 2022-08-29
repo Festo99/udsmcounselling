@@ -104,7 +104,7 @@ session_start();
                                     //echo "password match";
                                     session_start();
                                     $_SESSION['name']=$fetch['email'];
-                                    header('location:index.php');
+                                   header('location:index.php');
                            }
                 else{
                     ?>  <div class="containetr justify-content-center mt-3 mb-3">
