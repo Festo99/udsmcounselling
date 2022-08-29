@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 26, 2022 at 08:58 PM
+-- Generation Time: Aug 29, 2022 at 09:28 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `appointment` (
-  `appointment_id` int(11) NOT NULL,
+  `appointment_id` int(100) UNSIGNED NOT NULL,
   `issuefaced` varchar(100) NOT NULL,
   `counsellor` varchar(100) NOT NULL,
   `dates` date NOT NULL,
@@ -42,12 +42,15 @@ CREATE TABLE `appointment` (
 --
 
 INSERT INTO `appointment` (`appointment_id`, `issuefaced`, `counsellor`, `dates`, `datestime`, `statuses`, `messages`) VALUES
-(1500, 'Pyscho-social', 'Henry Daniels', '2022-05-13', '12:47:00', '0', 'hello'),
-(1501, 'Pyscho-social', 'Cristina Groves', '2022-06-22', '13:47:00', 'Active', 'hello doctor i have critical thinking about life and soooooooo'),
-(1502, 'Health', 'Marie Wells', '2022-04-30', '13:50:00', 'Active', 'unyama tu'),
-(1503, 'Education', 'Marie Wells', '2022-05-19', '15:49:00', '0', 'i have something in my education results'),
-(1504, 'Financial', 'Cristina Groves', '2022-05-19', '14:59:00', 'Active', 'hello doctor, i need your help on loss '),
-(1505, 'Education', 'Marie Wells', '2022-05-28', '23:43:00', 'Active', 'be there');
+(1, 'Health', 'JUMA SHAIBU', '2022-08-11', '15:06:00', 'active', 'juma'),
+(2, 'Pyscho-social', 'Henry Daniels', '2022-05-13', '12:47:00', '0', 'hello'),
+(3, 'Pyscho-social', 'Cristina Groves', '2022-06-22', '13:47:00', 'Active', 'hello doctor i have critical thinking about life and soooooooo'),
+(4, 'Health', 'Marie Wells', '2022-04-30', '13:50:00', 'Active', 'unyama tu'),
+(5, 'Education', 'Marie Wells', '2022-05-19', '15:49:00', '0', 'i have something in my education results'),
+(6, 'Financial', 'Cristina Groves', '2022-05-19', '14:59:00', 'Active', 'hello doctor, i need your help on loss '),
+(7, 'Education', 'Marie Wells', '2022-05-28', '23:43:00', 'Active', 'be there'),
+(8, 'Pyscho-social', 'JAMES SOAP', '2022-08-18', '16:22:00', 'active', 'Trial no 2'),
+(9, 'Pyscho-social', 'JESSE XIBONA', '2022-08-18', '16:24:00', 'active', 'meet me');
 
 -- --------------------------------------------------------
 
@@ -140,7 +143,8 @@ CREATE TABLE `students` (
 --
 
 INSERT INTO `students` (`student_id`, `fname`, `lname`, `email`, `password`, `phone`, `nida`, `location`) VALUES
-(14, 'Dickson', 'Madaraka', 'shemzang@gmail.com', '$2y$10$5z6ochDXSAAvP.YU70zlZ.ayfqpRCTxXUSYvSeUs9hwfdKRsdK57W', 683882533, '123456789', 'makongo');
+(14, 'Dickson', 'Madaraka', 'shemzang@gmail.com', '$2y$10$5z6ochDXSAAvP.YU70zlZ.ayfqpRCTxXUSYvSeUs9hwfdKRsdK57W', 683882533, '123456789', 'makongo'),
+(15, 'Dickson', 'masatu', 'king@gmail.com', '$2y$10$PNmI9WvM/3Qh4KJ9ePFXouQMq8HjqP5y5clS08G5Pt3nwT.cuSJfW', 683882533, '12345678', 'makongo');
 
 --
 -- Indexes for dumped tables
@@ -183,6 +187,12 @@ ALTER TABLE `students`
 --
 
 --
+-- AUTO_INCREMENT for table `appointment`
+--
+ALTER TABLE `appointment`
+  MODIFY `appointment_id` int(100) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
 -- AUTO_INCREMENT for table `chat`
 --
 ALTER TABLE `chat`
@@ -204,7 +214,7 @@ ALTER TABLE `schedule`
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `student_id` int(13) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `student_id` int(13) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Constraints for dumped tables
